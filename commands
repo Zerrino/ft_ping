@@ -1,0 +1,2 @@
+docker build -t ft_ping-image .
+docker compose up -d

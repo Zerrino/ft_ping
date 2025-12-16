@@ -1,0 +1,22 @@
+services:
+  ft_ping:
+    build: .
+    restart: always
+    container_name: ft_ping
+    volumes:
+      - ${HOME}/.ssh:/root/.ssh:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=${DISPLAY}
+    devices:
+      - /dev/video0:/dev/video0  
+    group_add:
+      - video
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+      - NET_RAW
+    security_opt:
+      - seccomp=unconfined
+    stdin_open: true
+    tty: true
